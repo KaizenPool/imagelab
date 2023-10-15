@@ -285,11 +285,32 @@ public class ImageLab {
             public void actionPerformed(final ActionEvent e) {
                 ImgProvider improvider; // Hold the image
                 FileDialog fd;
+                boolean refresh = false;
+                String theFile = " "; //create a string so that they can change in the loop
+                //without hindering the last part of the code
+                String theDir =" ";
+                while (refresh == false)
+                {
                 fd = new FileDialog(frame, "Pick an image", FileDialog.LOAD);
                 fd.setVisible(true);
-                String theFile = fd.getFile();
-                String theDir = fd.getDirectory();
+                theFile = fd.getFile();
+                theDir = fd.getDirectory();
                 //System.out.println("The file's name is " + theDir + theFile);
+                //testing to see if the program can get the file type 
+                //creates the substring to serve as a file type
+                //the idea behind this is to create a loop, so that when
+                //the file is entered it can run until the right file is choosen
+                //issue the substring started at the a place was one character just before the
+                //the file type. it went from test -1 to test
+                //changing from test -1 to test included just the file but
+                //it also included the period just before the string of the file type
+                //work for gif file
+                //worked for non accepted file types
+            
+                
+                int test = theFile.lastIndexOf('.');
+                String fileType = theFile.substring(test+1);
+                refresh = (fileType.equals("gif") || fileType.equals("jpg")); }
                 improvider = new ImgProvider(theDir + theFile);
                 improvider.setLab(theLab);
                 improvider.showImage(theDir + theFile);
