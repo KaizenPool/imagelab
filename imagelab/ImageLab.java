@@ -310,7 +310,7 @@ public class ImageLab {
                 
                 int test = theFile.lastIndexOf('.');
                 String fileType = theFile.substring(test+1);
-                refresh = (fileType.equals("gif") || fileType.equals("jpg")); }
+                refresh = (fileType.equals("gif") || fileType.equals("jpg") || fileType.equals("png") || fileType.equals("bmp") ); }
                 improvider = new ImgProvider(theDir + theFile);
                 improvider.setLab(theLab);
                 improvider.showImage(theDir + theFile);
